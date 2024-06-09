@@ -1,0 +1,42 @@
+// Função que calcula o saldo de partidas e determina o nível do jogador
+function calculateRank(wins, losses) {
+    // Calcular o saldo de vitórias
+    let winBalance = wins - losses;
+    let rank = "";
+
+    // Determinar o nível do jogador com base no número de vitórias
+    if (wins < 10) {
+        rank = "Iron";
+    } else if (wins >= 11 && wins <= 20) {
+        rank = "Bronze";
+    } else if (wins >= 21 && wins <= 50) {
+        rank = "Silver";
+    } else if (wins >= 51 && wins <= 80) {
+        rank = "Gold";
+    } else if (wins >= 81 && wins <= 90) {
+        rank = "Diamond";
+    } else if (wins >= 91 && wins <= 100) {
+        rank = "Legendary";
+    } else if (wins >= 101) {
+        rank = "Immortal";
+    }
+
+    // Retornar um objeto com o saldo e o nível
+    return { winBalance: winBalance, rank: rank };
+}
+
+// Função principal para interagir com o usuário
+function main() {
+    // Valores pré-definidos de vitórias e derrotas
+    let wins = 125;
+    let losses = 34;
+
+    // Calcular o rank usando a função calculateRank
+    let result = calculateRank(wins, losses);
+
+    // Exibir a mensagem final
+    console.log("The Hero has a balance of " + result.winBalance + " wins and is at the rank of " + result.rank);
+}
+
+// Chamar a função principal
+main();
